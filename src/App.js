@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import styles from './App.css';
 import { client } from './client';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 
 const App = () => {
   const [state, setState] = useState({})
@@ -11,24 +18,18 @@ const App = () => {
       setState(res.items[0].fields)
     })
   },[client, setState])
-  console.log(state);
-  // componentDidMount() {
-  //   client.getEntries()
-  //     .then((response) => {
-  //       console.log(response)
-  //       this.setState({
-  //         data: response.items
-  //       })
-  //     })
-  //     .catch(console.error)
-  // }
 
   return (
-    <div>
-      <Navbar data={state} />
-    </div>
+    <Router>
+      <div className={styles.App}>
+        <Navbar data={state} />
+        <Routes>
+            <Route path="/" element={<Home data={state} />}/>
+          </Routes>
+          {/* <Navigate exact to="/"/> */}
+      </div>
+    </Router>
   );
 }
-
 
 export default App;

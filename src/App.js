@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import { client } from './client';
+import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
+  const [state, setState] = useState({})
+
+  useEffect(()=>{
+    client.getEntries().then(res => {
+      setState(res.items[0].fields)
+    })
+  },[client, setState])
+  console.log(state);
+  // componentDidMount() {
+  //   client.getEntries()
+  //     .then((response) => {
+  //       console.log(response)
+  //       this.setState({
+  //         data: response.items
+  //       })
+  //     })
+  //     .catch(console.error)
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar data={state} />
     </div>
   );
 }
+
 
 export default App;

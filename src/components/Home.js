@@ -4,17 +4,19 @@ import styles from './Home.module.css';
 
 const Home = ({data}) => {
     const {about} = data;
-    // const {profilePicture} = data.fields.file;
+    // const {url} = data.profilePicture.fields.file;
     return (
         <div className={styles.flex__container}>
-            <div className={styles.circle__image}></div>
+            {/* <div className={styles.circle__image}></div> */}
             {/* <ReactRoundedImage image={profilePicture}/> */}
-            {/* <img src={profilePicture}/> */}
             <div>
+                <img  className={styles.circle__image}/>
+            </div>
+            <div className={styles.flex__outer__container}>
                 <div>
                     <span className={styles.span}>Hello</span>
                     <h4>A Bit About Me</h4>
-                    <div style={{width:"500px"}}>
+                    <div>
                         <p style={{fontSize:"smaller"}}>{about}</p>
                     </div>
                 </div>

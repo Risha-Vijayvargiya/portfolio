@@ -11,22 +11,21 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 
 const App = () => {
-  const [state, setState] = useState({})
+  const [data, setData] = useState({})
 
   useEffect(()=>{
     client.getEntries().then(res => {
-      setState(res.items[0].fields)
+      setData(res.items[0].fields)
     })
-  },[client, setState])
+  },[client, setData])
 
   return (
     <Router>
       <div className={styles.App}>
-        <Navbar data={state} />
+        <Navbar data={data} />
         <Routes>
-            <Route path="/" element={<Home data={state} />}/>
-          </Routes>
-          {/* <Navigate exact to="/"/> */}
+          <Route path="/" element={<Home data={data} />}/>
+        </Routes>
       </div>
     </Router>
   );

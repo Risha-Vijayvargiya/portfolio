@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ReactRoundedImage from "react-rounded-image";
-import styles from './Home.module.css';
+import styles from './Home.module.scss';
 
 const Home = ({data}) => {
     const {about} = data;
@@ -21,9 +22,15 @@ const Home = ({data}) => {
                     </div>
                 </div>
                 <div className={styles.flex__inner__container}>
-                    <div className={styles.circle} id={styles.circle1}>Education</div>
-                    <div className={styles.circle} id={styles.circle2}>Skills</div>
-                    <div className={styles.circle} id={styles.circle3}>Projects</div>
+                    <Link to="/education" className={styles.link}>
+                        <div className={styles.circle} id={styles.circle1}>Education</div>
+                    </Link>
+                    <Link to="/skills" className={styles.link}>
+                        <div className={styles.circle} id={styles.circle2}>Skills</div>
+                    </Link>
+                    <Link to="/projects" className={styles.link}>
+                        <div className={styles.circle} id={styles.circle3}>Projects</div>
+                    </Link>
                 </div>
             </div>
         </div>

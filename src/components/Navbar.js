@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from './Navbar.module.css';
+import styles from './Navbar.module.scss';
 
 const Navbar = ({data}) => {
     console.log(data);
@@ -12,17 +12,23 @@ const Navbar = ({data}) => {
                     <Link to="/">
                         <div className={styles.circle}></div>
                     </Link>
-                    <Link to="/" id={styles.link}>
+                    <Link to="/" className={styles.link}>
                         <h4 className={styles.text}>{name}</h4>
                     </Link>
                     <p className={styles.text}>{profession}</p>
                 </div>
                 <div className={styles.flex__container}>
-                    <p className={styles.text__link}>Education</p>
+                    <Link to="/education" className={styles.link}>
+                        <p className={styles.text__link}>Education</p>
+                    </Link>
                     <p className={styles.text}>|</p>
-                    <p className={styles.text__link}>Skills</p>
+                    <Link to="/skills" className={styles.link}>
+                        <p className={styles.text__link}>Skills</p>
+                    </Link>
                     <p className={styles.text}>|</p>
-                    <p className={styles.text__link}>Projects</p>
+                    <Link to="/projects" className={styles.link}>
+                        <p className={styles.text__link}>Projects</p>
+                    </Link>
                 </div>
             </div>
         </nav>
